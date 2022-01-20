@@ -26,5 +26,60 @@ public class Craps {
         else{
             apple = false;
         }
+        while(apple){
+            System.out.println("Press <x + Enter> to roll...");
+            Scanner pause = new Scanner(System.in);
+            String pause1 = input.next();
+            Die Die1 = new Die();
+            Die Die2 = new Die();
+            int roll11 = Die1.getRoll();
+            int roll12 = Die2.getRoll();
+            int sum1 = roll11+roll12;
+            if (sum1 == 7 || sum1 == 11){
+                System.out.println("Congrats, you rolled a " + roll11+ " and a "+ roll12+ " on your first roll. This totals to "+sum1+" meaning you win!");
+            }
+            else if (sum1 == 2 || sum1 == 3 || sum1 ==12){
+                System.out.println("Sorry, you rolled a "+ roll11+ " and a "+ roll12 + " on your first roll. This totals to "+sum1+" meaning you lose!");
+            }
+            else{
+                System.out.println("You rolled a "+ roll11+ " and a "+ roll12 + " on your first roll. Your point is "+sum1+".");
+                System.out.println("Press <x + Enter> to roll...");
+                pause1 = input.next();
+                Die1.newRoll();
+                Die2.newRoll();
+                int roll21 = Die1.getRoll();
+                int roll22 = Die2.getRoll();
+                int sum2 = roll21 + roll22;
+                while(sum2!=sum1&&sum2!=7){
+                    if(sum2==7){
+                        System.out.println("Sorry, you rolled a "+ roll21+ " and a "+ roll22 + " on your roll. This totals to "+sum2+" meaning you lose!");
+                    }
+                    else if (sum2==sum1){
+                        System.out.println("You rolled a "+ roll11+ " and a "+ roll12 + " on your roll. This equals your point. Congrats on winning!");
+                    }
+                    else{
+                        System.out.println("You rolled a "+ roll11+ " and a "+ roll12 + " on your roll. This equals "+ sum2+". Your point is still "+sum1+".");
+                        System.out.println("Press <x + Enter> to roll...");
+                        pause1 = input.next();
+                        Die1.newRoll();
+                        Die2.newRoll();
+                        roll21 = Die1.getRoll();
+                        roll22 = Die2.getRoll();
+                        sum2 = roll21 + roll22;
+                    }
+                if(sum2==7){
+                    System.out.println("Sorry, you rolled a "+ roll21+ " and a "+ roll22 + " on your roll. This totals to "+sum2+" meaning you lose!");
+                }
+                else if (sum2==sum1){
+                    System.out.println("You rolled a "+ roll11+ " and a "+ roll12 + " on your roll. This equals your point. Congrats on winning!");
+                }
+                }
+            }
+            System.out.println("Play again?(y/n): ");
+            a = input.next();
+            if(a.equals("n")){
+                apple = false;
+            }
+        }
     }
 }
