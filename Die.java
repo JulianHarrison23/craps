@@ -14,6 +14,10 @@ public class Die {
     public int getRoll(){
         return roll;
     }
+    
+    public void newRoll(){
+        roll = (int)(Math.random()*6)+1;
+    }
 
 
 }
